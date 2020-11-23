@@ -1,2 +1,2 @@
 # Ronin
-2D Indie Game
+Dokkōdō - (2D IndieGame)
