@@ -1,0 +1,13 @@
+Ronin
+
+This will be a 2D game with a relatively basic story. Sprites will be gathered from an asset library.
+
+The game must have: 
+(3 basic enemies, 1 boss, 1 puzzle) --OOP
+(Utilization of a database to save score)
+(Multiple skills for user to use)
+(Ability to summon characters for special attacks)
+(Provide a guide character through out the game)
+
+If it's free you can use it. The goal is to build a pretty nice 2D game by spending nothing.
+
