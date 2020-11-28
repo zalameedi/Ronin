@@ -1,5 +1,6 @@
 package dev.codenmore.tilegame;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -43,8 +44,18 @@ public class Game implements Runnable {
 		g = bs.getDrawGraphics();
 		
 		//Start Drawing Portion
-		g.drawRect(0, 0, 250, 250);
+		g.clearRect(0, 0, width, height);
+
+		g.setColor(Color.orange);
+		g.fillRect(0, 0, 250, 250);
+		
+		g.fillRect(30, 50, 20, 20);
+		
+		g.setColor(Color.black);
+		g.fillRect(50, 10, 35, 50);
+		g.fillRect(260, 30, 35, 50);
 		//End Drawing Portion
+		
 		
 		bs.show();
 		g.dispose();
