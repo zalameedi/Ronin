@@ -3,8 +3,10 @@ package dev.codenmore.tilegame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import dev.codenmore.tilegame.display.Display;
+import dev.codenmore.tilegame.gfx.ImageLoader;
 
 public class Game implements Runnable {
 	private int height, width;
@@ -14,6 +16,7 @@ public class Game implements Runnable {
 	private Graphics g;
 	private BufferStrategy bs;
 	private Display display;
+	private BufferedImage testImage;
 	
 	public Game(String title, int width, int height)
 	{
@@ -26,6 +29,7 @@ public class Game implements Runnable {
 	public void init()
 	{
 		display = new Display(height, width, title);
+		testImage = ImageLoader.loadImage("/textures/testsamurai.png");
 	}
 	
 	public void update()
@@ -45,15 +49,9 @@ public class Game implements Runnable {
 		
 		//Start Drawing Portion
 		g.clearRect(0, 0, width, height);
+		
+		g.drawImage(testImage, 20, 20, null);
 
-		g.setColor(Color.orange);
-		g.fillRect(0, 0, 250, 250);
-		
-		g.fillRect(30, 50, 20, 20);
-		
-		g.setColor(Color.black);
-		g.fillRect(50, 10, 35, 50);
-		g.fillRect(260, 30, 35, 50);
 		//End Drawing Portion
 		
 		
