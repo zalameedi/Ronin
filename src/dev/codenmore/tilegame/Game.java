@@ -1,5 +1,8 @@
 package dev.codenmore.tilegame;
 
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
 import dev.codenmore.tilegame.display.Display;
 
 public class Game implements Runnable {
@@ -7,6 +10,9 @@ public class Game implements Runnable {
 	private Thread thread;
 	private String title;
 	private boolean running;
+	private Graphics g;
+	private BufferStrategy bs;
+	private Display display;
 	
 	public Game(String title, int width, int height)
 	{
@@ -18,7 +24,7 @@ public class Game implements Runnable {
 	
 	public void init()
 	{
-		Display myDisplay = new Display(height, width, title);
+		display = new Display(height, width, title);
 	}
 	
 	public void update()
@@ -28,15 +34,30 @@ public class Game implements Runnable {
 	
 	public void render()
 	{
+		bs = display.getCanvas().getBufferStrategy();
+		if(bs == null)
+		{
+			display.getCanvas().createBufferStrategy(3);
+			return;
+		}
+		g = bs.getDrawGraphics();
 		
+		//Start Drawing Portion
+		g.drawRect(0, 0, 250, 250);
+		//End Drawing Portion
+		
+		bs.show();
+		g.dispose();
 	}
 
 	public void run() {
 		// TODO Auto-generated method stub
 		init();
 		while(running)
+		{
 			update();
 			render();
+		}
 			
 		try {
 			stop();
@@ -50,7 +71,7 @@ public class Game implements Runnable {
 	{
 		if (!running)
 			running = true;
-			thread = new Thread(thread);
+			thread = new Thread(this);
 			thread.start();
 	}
 	

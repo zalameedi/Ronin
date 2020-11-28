@@ -2,6 +2,8 @@ package dev.codenmore.tilegame.display;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
@@ -11,6 +13,8 @@ public class Display {
 	
 	private int width, height;
 	private String title;
+	
+	
 	
 	public Display()
 	{
@@ -44,6 +48,11 @@ public class Display {
 		
 		frame.add(canvas);
 		frame.pack();
+	}
+	
+	public Canvas getCanvas()
+	{
+		return canvas;
 	}
 
 }
