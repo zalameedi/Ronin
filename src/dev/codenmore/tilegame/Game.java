@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import dev.codenmore.tilegame.display.Display;
 import dev.codenmore.tilegame.gfx.ImageLoader;
+import dev.codenmore.tilegame.gfx.SpriteSheet;
 
 public class Game implements Runnable {
 	private int height, width;
@@ -17,6 +18,7 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Display display;
 	private BufferedImage testImage;
+	private SpriteSheet sheet;
 	
 	public Game(String title, int width, int height)
 	{
@@ -29,7 +31,8 @@ public class Game implements Runnable {
 	public void init()
 	{
 		display = new Display(height, width, title);
-		testImage = ImageLoader.loadImage("/textures/testsamurai.png");
+		testImage = ImageLoader.loadImage("/textures/sprite.png");
+		sheet = new SpriteSheet(testImage);
 	}
 	
 	public void update()
@@ -50,7 +53,7 @@ public class Game implements Runnable {
 		//Start Drawing Portion
 		g.clearRect(0, 0, width, height);
 		
-		g.drawImage(testImage, 20, 20, null);
+		g.drawImage(sheet.crop(0, 0, 1000, 1000), 5, 5, null);
 
 		//End Drawing Portion
 		
